@@ -1,0 +1,56 @@
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+declare var firebase: any;
+@Component({
+    selector: 'upload-file',
+    templateUrl: './uploadfile.html',
+})
+export class UploadFileComponent implements OnInit {
+    @Output() onUpload = new EventEmitter<string>()
+    private currentProgress: string;
+    private storageRef = firebase.storage().ref();
+    private fileuploadedURL : string;
+
+    constructor(private chRef: ChangeDetectorRef) {
+    }
+    ngOnInit() {
+        this.currentProgress = "0";
+     }
+    uploadFile(event) {
+        // Create a reference to 'images/mountains.jpg'
+        if (event.files.length > 0) {
+            var mountainImagesRef = this.storageRef.child('images/' + event.files[0].name);
+            var file = event.files[0];
+            var uploadTask = mountainImagesRef.put(file);
+            this.uploadProgress(uploadTask);
+        } else {
+            alert('Please select file');
+        }
+    }
+    uploadProgress(uploadTask) {
+        const scope = this;
+        uploadTask.on('state_changed', function (snapshot) {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            scope.currentProgress = progress.toFixed(0);
+            scope.chRef.detectChanges();
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+            }
+        }, function (error) {
+            // Handle unsuccessful uploads
+        }, function () {
+            scope.currentProgress = "0";
+            scope.fileuploadedURL = uploadTask.snapshot.downloadURL;
+            scope.onUpload.emit(scope.fileuploadedURL);
+            scope.chRef.detectChanges();
+        });
+    }
+}

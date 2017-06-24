@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h2>File Uploader</h2>
+        <form>
+            <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*" #fileUpload>
+            <br />
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: currentProgress + '%' }">
+                </div>
+            </div>
+            <span class="input-group-btn">
+                <button  type="submit" class="btn btn-block" (click)="uploadFile(fileUpload)">Upload Image <i>send</i></button>
+          </span>
+        </form>
+    </div>
+</div>

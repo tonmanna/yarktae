@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-declare var $: any;
 
 @Component({
     selector: 'app-main',
@@ -8,10 +7,9 @@ declare var $: any;
 })
 export class AppComponent implements OnInit {
     constructor() {
+
     }
     ngOnInit() {
-        setTimeout( () => {
-            $('body').show();
-        });
-    }
+        
+    }    
 }

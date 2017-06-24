@@ -6,12 +6,14 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { Routing } from './app.routes';
 
-// Controller
-import { Problem2Component } from './Controllers/Service/Problem2Ctrl';
-import { HomeComponent } from './Controllers/HomeCtrl';
+// View
+import { HomeComponent } from './Views/home';
 
-// Shared
-import { NavbarComponent } from './Controllers/_Shared/NavbarCtrl';
+// Component
+import { UploadFileComponent } from './Components/uploadfile/uploadfile';
+import { PreviewPictureComponent } from './Components/peviewpicture/previewpicture';
+import { FirebaseLoginComponent } from './Components/firebaselogin/filebaselogin';
+import { HistoryPictureComponent } from './Components/historypicture/historypicture';
 
 @NgModule({
     imports: [
@@ -24,10 +26,16 @@ import { NavbarComponent } from './Controllers/_Shared/NavbarCtrl';
     declarations: [
         AppComponent,
         HomeComponent,
-        Problem2Component,
-        NavbarComponent
+        UploadFileComponent,
+        PreviewPictureComponent,
+        FirebaseLoginComponent,
+        HistoryPictureComponent
     ],
     bootstrap: [ AppComponent ]
 })
 
-export class AppModule { }
+export class AppModule {
+    constructor(){
+        //var firebaseLogin = new FirebaseLoginComponent();
+    }
+ }

@@ -1,11 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
-import { Problem2Component } from './Controllers/Service/Problem2Ctrl';
-import { HomeComponent } from './Controllers/HomeCtrl';
+import { HomeComponent } from './Views/home';
 
 const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch : 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'problem_second_payment', component: Problem2Component}
+    {path: 'home', component: HomeComponent}
 ];
 
 export const Routing = RouterModule.forRoot(routes);

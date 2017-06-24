@@ -23,10 +23,11 @@ module.exports = webpackMerge(commonConfig, {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            inject: 'body',
+            chunksSortMode: 'dependency',
             filename: 'index.html'
         }),
         new webpack.ProvidePlugin({
+            firebase: "firebase",
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery",
@@ -51,5 +52,12 @@ module.exports = webpackMerge(commonConfig, {
             tsconfig: 'tsconfig.json',
             compiler: 'typescript'
         })
-    ]
+    ],
+    devServer: {
+        port: 8080,
+        historyApiFallback: true,
+        watchOptions: {
+            ignored: /node_modules/
+        }
+    }
 });

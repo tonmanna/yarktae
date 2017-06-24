@@ -1,0 +1,13 @@
+<div class="columns">
+    <div class="column is-one-third">
+        <div class="row">
+            <upload-file (onUpload)="onUpload($event)"></upload-file>
+        </div>
+    </div>
+    <div class="column">
+        <div class="container">
+            <preview-picture [imagePath]="imagePath"></preview-picture>
+        </div>
+    </div>
+</div>
+<history-picture></history-picture>
