@@ -14,6 +14,8 @@ import { UploadFileComponent } from './Components/uploadfile/uploadfile';
 import { PreviewPictureComponent } from './Components/peviewpicture/previewpicture';
 import { FirebaseLoginComponent } from './Components/firebaselogin/filebaselogin';
 import { HistoryPictureComponent } from './Components/historypicture/historypicture';
+import { CloudVisionComponent } from './Components/cloudvision/cloudvision.component';
+import { GoogleSearchComponent } from './Components/googlesearch/googlesearch.component';
 
 @NgModule({
     imports: [
@@ -29,13 +31,15 @@ import { HistoryPictureComponent } from './Components/historypicture/historypict
         UploadFileComponent,
         PreviewPictureComponent,
         FirebaseLoginComponent,
-        HistoryPictureComponent
+        HistoryPictureComponent,
+        CloudVisionComponent,
+        GoogleSearchComponent
     ],
     bootstrap: [ AppComponent ]
 })
 
 export class AppModule {
     constructor(){
-        //var firebaseLogin = new FirebaseLoginComponent();
+        
     }
  }

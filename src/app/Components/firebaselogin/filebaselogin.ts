@@ -8,7 +8,7 @@ declare var firebase: any;
     templateUrl: './filebaselogin.html'
 })
 export class FirebaseLoginComponent {
-    @Output() loginSuccess = new EventEmitter<any>();
+    @Output() onLoginSuccess = new EventEmitter<any>();
     private loginStatus: boolean = false;
     private provider: any;
     constructor(private chRef : ChangeDetectorRef) {
@@ -29,12 +29,13 @@ export class FirebaseLoginComponent {
         });        
     }
     firebaseLoginClick() {
+        var scope = this;
         firebase.auth().signInWithPopup(this.provider).then((result)=>{
             var token = result.credential.accessToken;
             var user = result.user;
-            this.loginStatus = true;
-            this.chRef.detectChanges();
-            this.loginSuccess.emit(result);
+            scope.loginStatus = true;
+            scope.onLoginSuccess.emit(result);
+            scope.chRef.detectChanges();            
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;

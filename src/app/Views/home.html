@@ -1,3 +1,4 @@
+<firebase-login (onLoginSuccess)="onLoginSuccess($event)"></firebase-login>
 <div class="columns">
     <div class="column is-one-third">
         <div class="row">
@@ -10,4 +11,6 @@
         </div>
     </div>
 </div>
-<history-picture></history-picture>
+<cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></cloud-vision>
+<google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></google-search>
+<history-picture [imageList]="imageList" (onPickImage)="onPickImage($event)"></history-picture>
