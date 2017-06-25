@@ -4,6 +4,7 @@
     <base href="/">
     <title>ITOPPLUS issue resolve</title>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -13,5 +14,14 @@
         <h1>Loading...</h1>
     </div>
 </body>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then(function() {
+                console.log("Service Worker Registered");
+            });
+    }
+</script>
 
 </html>
