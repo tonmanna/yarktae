@@ -9,7 +9,7 @@ declare var firebase: any;
 })
 export class FirebaseLoginComponent {
     @Output() loginSuccess = new EventEmitter<any>();
-    public loginStatus: boolean = false;
+    private loginStatus: boolean = false;
     private provider: any;
     constructor(private chRef : ChangeDetectorRef) {
         this.loginStatus = false;

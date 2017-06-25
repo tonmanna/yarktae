@@ -16,11 +16,6 @@ module.exports = webpackMerge(commonConfig, {
         poll: true
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            jquery: 'jquery'
-        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             chunksSortMode: 'dependency',

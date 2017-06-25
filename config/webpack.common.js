@@ -4,9 +4,9 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        'vendor': './src/vendor.ts',
         'app': './src/main.ts',
-        'polyfills': './src/polyfills.ts'
+        'polyfills': './src/polyfills.ts',
+        'vendor': './src/vendor.ts'
     },
     output: {
         path: helpers.root('/dist'),
