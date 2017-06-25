@@ -20,7 +20,8 @@ export class UploadFileComponent implements OnInit {
     uploadFile(event) {
         // Create a reference to 'images/mountains.jpg'
         if (event.files.length > 0) {
-            var mountainImagesRef = this.storageRef.child('images/' + event.files[0].name);
+            const timestamp = new Date().getTime().toString();
+            var mountainImagesRef = this.storageRef.child('images/' + timestamp + event.files[0].name);
             var file = event.files[0];
             var uploadTask = mountainImagesRef.put(file);
             this.uploadProgress(uploadTask);
@@ -46,8 +47,7 @@ export class UploadFileComponent implements OnInit {
             }
         }, function (error) {
             // Handle unsuccessful uploads
-        }, function () {
-            scope.currentProgress = "0";
+        }, function () {            
             scope.fileuploadedURL = uploadTask.snapshot.downloadURL;
             scope.onUpload.emit(scope.fileuploadedURL);
             scope.chRef.detectChanges();

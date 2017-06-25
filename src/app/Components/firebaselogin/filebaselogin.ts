@@ -1,4 +1,4 @@
-import { Component, OnInit ,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit ,ChangeDetectorRef, Input, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 declare var firebase: any;
@@ -8,6 +8,7 @@ declare var firebase: any;
     templateUrl: './filebaselogin.html'
 })
 export class FirebaseLoginComponent {
+    @Output() loginSuccess = new EventEmitter<any>();
     public loginStatus: boolean = false;
     private provider: any;
     constructor(private chRef : ChangeDetectorRef) {
@@ -33,6 +34,7 @@ export class FirebaseLoginComponent {
             var user = result.user;
             this.loginStatus = true;
             this.chRef.detectChanges();
+            this.loginSuccess.emit(result);
         }).catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;

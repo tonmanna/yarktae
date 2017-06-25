@@ -8,9 +8,6 @@
 </head>
 
 <body class="container">
-    <div class="pull-right">
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-    </div>
     <app-main>Loading...</app-main>
 <script type="text/javascript" src="/vendor.js"></script><script type="text/javascript" src="/polyfills.js"></script><script type="text/javascript" src="/app.js"></script></body>
 
@@ -19,49 +16,5 @@
 <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: '243096129523250',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.8'
-        });
-        FB.AppEvents.logPageView();
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDdJsqVaII3-RP89gNlBfeSy1V_W-wz_0g",
-        authDomain: "yarktae-52332.firebaseapp.com",
-        databaseURL: "https://yarktae-52332.firebaseio.com",
-        projectId: "yarktae-52332",
-        storageBucket: "yarktae-52332.appspot.com",
-        messagingSenderId: "563985708270"
-    };
-    firebase.initializeApp(config);
-
-    var loginFacebook = {
-        login: "success"
-    };
-
-    function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-            console.log("Login Success");
-            loginFacebook = response;
-        });
-    }
-</script>
 
 </html>
