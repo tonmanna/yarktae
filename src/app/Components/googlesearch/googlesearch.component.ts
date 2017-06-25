@@ -19,8 +19,11 @@ export class GoogleSearchComponent implements OnInit, OnChanges {
             if (event.keywordList != undefined) {
                 if (event.keywordList.currentValue != undefined) {
                     if (this.keywordList.length > 0) {
-                        console.log("DES",this.keywordList[0].description);
-                        this.googleSearch.searchRequest(this.keywordList[0].description).subscribe((x) => {
+                        var content = this.keywordList[0].description;
+                        if(content == undefined){
+                            content = this.keywordList[1].description;
+                        }
+                        this.googleSearch.searchRequest(content).subscribe((x) => {
                             var itemList = [];
                             x.items.map((result) => {
                                 result.url = result.link;
