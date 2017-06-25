@@ -7,7 +7,7 @@ declare var firebase: any;
     templateUrl: './uploadfile.html',
 })
 export class UploadFileComponent implements OnInit {
-    @Output() onUpload = new EventEmitter<string>()
+    @Output() onUpload = new EventEmitter<string>();
     private currentProgress: string;
     private storageRef = firebase.storage().ref();
     private fileuploadedURL : string;
@@ -17,12 +17,12 @@ export class UploadFileComponent implements OnInit {
     ngOnInit() {
         this.currentProgress = "0";
      }
-    uploadFile(event) {
+    uploadFile(element) {
         // Create a reference to 'images/mountains.jpg'
-        if (event.files.length > 0) {
+        if (element.files.length > 0) {
             const timestamp = new Date().getTime().toString();
-            var mountainImagesRef = this.storageRef.child('images/' + timestamp + event.files[0].name);
-            var file = event.files[0];
+            var mountainImagesRef = this.storageRef.child('images/' + timestamp + element.files[0].name);
+            var file = element.files[0];
             var uploadTask = mountainImagesRef.put(file);
             this.uploadProgress(uploadTask);
         } else {
