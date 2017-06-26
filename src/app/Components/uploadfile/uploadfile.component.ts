@@ -9,7 +9,7 @@ import {
 import {ActivatedRoute} from '@angular/router';
 
 declare var firebase : any;
-@Component({selector: 'sg-upload-file', templateUrl: './uploadfile.component.html'})
+@Component({selector: 'cmp-upload-file', templateUrl: './uploadfile.component.html'})
 export class UploadFileComponent implements OnInit {
     @Output()onUpload = new EventEmitter < string > ();
     private currentProgress : string;

@@ -7,7 +7,7 @@ import {
     EventEmitter
 } from '@angular/core';
 
-@Component({selector: 'sg-history-picture', templateUrl: 'historypicture.component.html', styleUrls: ['historypicture.component.css']})
+@Component({selector: 'cmp-history-picture', templateUrl: 'historypicture.component.html', styleUrls: ['historypicture.component.css']})
 
 export class HistoryPictureComponent implements OnInit,
 OnChanges {

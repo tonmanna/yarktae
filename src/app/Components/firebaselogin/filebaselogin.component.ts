@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 
 declare var firebase : any;
 
-@Component({selector: 'sg-firebase-login', templateUrl: './filebaselogin.component.html'})
+@Component({selector: 'cmp-firebase-login', templateUrl: './filebaselogin.component.html'})
 
 export class FirebaseLoginComponent {
     @Output()onLoginSuccess = new EventEmitter < any > ();

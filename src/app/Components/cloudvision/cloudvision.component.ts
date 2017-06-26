@@ -7,7 +7,7 @@ import {
     OnChanges
 } from '@angular/core';
 import {CloudVisionService} from './cloudvision.service';
-@Component({selector: 'sg-cloud-vision', template: '', providers: [CloudVisionService]})
+@Component({selector: 'cmp-cloud-vision', template: '', providers: [CloudVisionService]})
 
 export class CloudVisionComponent implements OnInit,
 OnChanges {
