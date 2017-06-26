@@ -1,16 +1,16 @@
-<firebase-login (onLoginSuccess)="onLoginSuccess($event)"></firebase-login>
+<sg-firebase-login (onLoginSuccess)="onLoginSuccess($event)"></sg-firebase-login>
 <div class="columns">
     <div class="column is-one-third">
         <div class="row">
-            <upload-file (onUpload)="onUpload($event)"></upload-file>
+            <sg-upload-file (onUpload)="onUpload($event)"></sg-upload-file>
         </div>
     </div>
     <div class="column">
         <div class="container">
-            <preview-picture [imagePath]="imagePath"></preview-picture>
+            <sg-preview-picture [imagePath]="imagePath"></sg-preview-picture>
         </div>
     </div>
 </div>
-<cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></cloud-vision>
-<google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></google-search>
-<history-picture [imageList]="imageList" (onPickImage)="onPickImage($event)"></history-picture>
+<sg-cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></sg-cloud-vision>
+<sg-google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></sg-google-search>
+<sg-history-picture [imageList]="imageList" (onPickImage)="onPickImage($event)"></sg-history-picture>

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {GoogleSearchService} from './googlesearch.service';
 
-@Component({selector: 'sg-google-search', providers: [GoogleSearchService]})
+@Component({selector: 'sg-google-search', template: '', providers: [GoogleSearchService]})
 
 export class GoogleSearchComponent implements OnInit,
 OnChanges {
