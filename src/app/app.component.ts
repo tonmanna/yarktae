@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'sg-main',
+    selector: 'cmp-main',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })

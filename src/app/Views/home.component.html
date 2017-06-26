@@ -1,16 +1,16 @@
-<sg-firebase-login (onLoginSuccess)="onLoginSuccess($event)"></sg-firebase-login>
+<cmp-firebase-login (onLoginSuccess)="onLoginSuccess($event)"></cmp-firebase-login>
 <div class="columns">
     <div class="column is-one-third">
         <div class="row">
-            <sg-upload-file (onUpload)="onUpload($event)"></sg-upload-file>
+            <cmp-upload-file (onUpload)="onUpload($event)"></cmp-upload-file>
         </div>
     </div>
     <div class="column">
         <div class="container">
-            <sg-preview-picture [imagePath]="imagePath"></sg-preview-picture>
+            <cmp-preview-picture [imagePath]="imagePath"></cmp-preview-picture>
         </div>
     </div>
 </div>
-<sg-cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></sg-cloud-vision>
-<sg-google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></sg-google-search>
-<sg-history-picture [imageList]="imageList" (onPickImage)="onPickImage($event)"></sg-history-picture>
+<cmp-cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></cmp-cloud-vision>
+<cmp-google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></cmp-google-search>
+<cmp-history-picture [imageList]="imageList" (onPickImage)="onPickImage($event)"></cmp-history-picture>
