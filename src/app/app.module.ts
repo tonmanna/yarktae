@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 import { Routing } from './app.routes';
 
 // View
-import { HomeComponent } from './Views/home';
+import { HomeComponent } from './Views/home.component';
 
 // Component
-import { UploadFileComponent } from './Components/uploadfile/uploadfile';
-import { PreviewPictureComponent } from './Components/peviewpicture/previewpicture';
-import { FirebaseLoginComponent } from './Components/firebaselogin/filebaselogin';
-import { HistoryPictureComponent } from './Components/historypicture/historypicture';
+import { UploadFileComponent } from './Components/uploadfile/uploadfile.component';
+import { PreviewPictureComponent } from './Components/peviewpicture/previewpicture.component';
+import { FirebaseLoginComponent } from './Components/firebaselogin/filebaselogin.component';
+import { HistoryPictureComponent } from './Components/historypicture/historypicture.component';
 import { CloudVisionComponent } from './Components/cloudvision/cloudvision.component';
 import { GoogleSearchComponent } from './Components/googlesearch/googlesearch.component';
 
@@ -39,7 +39,7 @@ import { GoogleSearchComponent } from './Components/googlesearch/googlesearch.co
 })
 
 export class AppModule {
-    constructor(){
-        
+    constructor() {
+
     }
  }

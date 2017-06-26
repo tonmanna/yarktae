@@ -1,39 +1,43 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { CloudVisionService } from "./cloudvision.service";
-@Component({
-    selector: 'cloud-vision',
-    templateUrl: 'cloudvision.component.html',
-    providers: [CloudVisionService]
-})
+import {
+    Component,
+    OnInit,
+    Input,
+    Output,
+    EventEmitter,
+    OnChanges
+} from '@angular/core';
+import {CloudVisionService} from './cloudvision.service';
+@Component({selector: 'sg-cloud-vision', providers: [CloudVisionService]})
 
-export class CloudVisionComponent implements OnInit, OnChanges {
-    @Input() imagePath: string;
-    @Output() onVisionResult = new EventEmitter<any>();
-    constructor(private cloudVisionService: CloudVisionService) { }
-    ngOnInit() { }
+export class CloudVisionComponent implements OnInit,
+OnChanges {
+    @Input()imagePath : string;
+    @Output()onVisionResult = new EventEmitter < any > ();
+    constructor(private cloudVisionService : CloudVisionService) {}
+    ngOnInit() {}
     ngOnChanges(event) {
-        if (event != undefined) {
-            if (event.imagePath != undefined) {
-                if (event.imagePath.currentValue != undefined) {
+        if (event !== undefined) {
+            if (event.imagePath !== undefined) {
+                if (event.imagePath.currentValue !== undefined) {
                     this.cloudVisionRequest()
                 }
             }
         }
     }
 
-    private generateJSON(imagePath): any {
+    private generateJSON(imagePath) : any {
         return {
-            "requests": [
+            'requests': [
                 {
-                    "features": [
+                    'features': [
                         {
-                            "type": "WEB_DETECTION",
-                            "maxResults": 20
+                            'type': 'WEB_DETECTION',
+                            'maxResults': 20
                         }
                     ],
-                    "image": {
-                        "source": {
-                            "imageUri": imagePath
+                    'image': {
+                        'source': {
+                            'imageUri': imagePath
                         }
                     }
                 }
@@ -42,7 +46,10 @@ export class CloudVisionComponent implements OnInit, OnChanges {
     }
     private cloudVisionRequest() {
         const request = this.generateJSON(this.imagePath);
-        this.cloudVisionService.cloudVisionRequest(request).subscribe(x => this.onVisionResult.emit(x));
+        this
+            .cloudVisionService
+            .cloudVisionRequest(request)
+            .subscribe(x => this.onVisionResult.emit(x));
     }
 
 }

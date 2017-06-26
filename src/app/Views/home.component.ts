@@ -1,20 +1,18 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, Input, Output} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-declare var $: any;
-@Component({
-    templateUrl: './home.html',
-})
+declare var $ : any;
+@Component({templateUrl: './home.component.html'})
 export class HomeComponent implements OnInit {
-    private imagePath: string;  // After Upload
-    private credential: any; // After Login
+    private imagePath : string; // After Upload
+    private credential : any; // After Login
 
-    private imageSimilarList: string[];
-    private keywordList: string[];
+    private imageSimilarList : string[];
+    private keywordList : string[];
 
     private imageList = [];
-    constructor() { }
-    ngOnInit() { }
+    constructor() {}
+    ngOnInit() {}
 
     onUpload(event) {
         this.imagePath = event;
@@ -34,7 +32,9 @@ export class HomeComponent implements OnInit {
                 if (event.responses[0].webDetection.webEntities != undefined) {
                     this.keywordList = event.responses[0].webDetection.webEntities;
                 }
-                this.imageList = this.imageList.concat(this.imageSimilarList);
+                this.imageList = this
+                    .imageList
+                    .concat(this.imageSimilarList);
             }
         } else {
             alert("Unknow picture");

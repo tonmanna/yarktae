@@ -8,7 +8,7 @@ export class CG {
         }
         return CG.instance;
     }
-    public apiKey = "AIzaSyDdJsqVaII3-RP89gNlBfeSy1V_W-wz_0g";
+    public apiKey = 'AIzaSyDdJsqVaII3-RP89gNlBfeSy1V_W-wz_0g';
 
     private constructor() {
         // prevent someone try to new instatiate this methode
