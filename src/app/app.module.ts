@@ -7,15 +7,15 @@ import {AppComponent} from './app.component';
 import {Routing} from './app.routes';
 
 // View
-import {HomeComponent} from './Views/home.component';
+import {HomeComponent} from './Components/home/home.component';
 
 // Component
-import {UploadFileComponent} from './Components/uploadfile/uploadfile.component';
-import {PreviewPictureComponent} from './Components/peviewpicture/previewpicture.component';
-import {FirebaseLoginComponent} from './Components/firebaselogin/filebaselogin.component';
-import {HistoryPictureComponent} from './Components/historypicture/historypicture.component';
-import {CloudVisionComponent} from './Components/cloudvision/cloudvision.component';
-import {GoogleSearchComponent} from './Components/googlesearch/googlesearch.component';
+import {UploadFileComponent} from './Components/_Shared/uploadfile/uploadfile.component';
+import {PreviewPictureComponent} from './Components/_Shared/peviewpicture/previewpicture.component';
+import {FirebaseLoginComponent} from './Components/_Shared/firebaselogin/filebaselogin.component';
+import {HistoryPictureComponent} from './Components/_Shared/historypicture/historypicture.component';
+import {CloudVisionComponent} from './Components/_Shared/cloudvision/cloudvision.component';
+import {GoogleSearchComponent} from './Components/_Shared/googlesearch/googlesearch.component';
 
 @NgModule({
     imports: [

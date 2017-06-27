@@ -2,7 +2,7 @@
     <div class="column is-8">
         <div class="tile is-parent">
             <article class="tile is-child notification">
-                <img [src]="imagePath" />
+                <img *ngIf="imagePath!=undefine" [src]="imagePath" style="display: none" onload="this.style.display=''" />
             </article>
         </div>
     </div>

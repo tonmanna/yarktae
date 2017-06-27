@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {HttpHelper} from '../../Models/HttpHelper';
-import {CG} from '../../Models/CG';
+import {HttpHelper} from '../../../Utils/HttpHelper';
+import {CG} from '../../../Utils/CG';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
