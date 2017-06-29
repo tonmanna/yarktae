@@ -14,8 +14,8 @@ declare var firebase : any;
 
 export class FirebaseLoginComponent {
     @Output()onLoginSuccess = new EventEmitter < any > ();
-    private loginStatus : boolean;
-    private provider : any;
+    public loginStatus : boolean;
+    public provider : any;
     constructor(private chRef : ChangeDetectorRef) {
         this.loginStatus = false;
         // Initialize Firebase

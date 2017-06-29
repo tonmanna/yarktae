@@ -4,13 +4,13 @@ import {ActivatedRoute} from '@angular/router';
 declare var $ : any;
 @Component({templateUrl: './home.component.html'})
 export class HomeComponent implements OnInit {
-    private imagePath : string; // After Upload
-    private credential : any; // After Login
+    public imagePath : string; // After Upload
+    public credential : any; // After Login
 
-    private imageSimilarList : string[];
-    private keywordList : string[];
+    public imageSimilarList : string[];
+    public keywordList : string[];
 
-    private imageList = [];
+    public imageList = [];
     constructor() {}
     ngOnInit() {}
 

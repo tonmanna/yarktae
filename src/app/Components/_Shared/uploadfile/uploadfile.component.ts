@@ -12,8 +12,8 @@ declare var firebase : any;
 @Component({selector: 'cmp-upload-file', templateUrl: './uploadfile.component.html'})
 export class UploadFileComponent implements OnInit {
     @Output()onUpload = new EventEmitter < string > ();
-    private currentProgress : string;
-    private storageRef = firebase
+    public currentProgress : string;
+    public storageRef = firebase
         .storage()
         .ref();
     private fileuploadedURL : string;
