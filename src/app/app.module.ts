@@ -44,9 +44,5 @@ import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper'
 })
 
 export class AppModule {
-<<<<<<< HEAD
-    constructor() { }
-=======
-    constructor(public appState: AppState) {}
->>>>>>> d2d418b974de1f8e9da509c9284bbf0b4ce238c0
+    constructor(public appState: AppState) { }
 }
