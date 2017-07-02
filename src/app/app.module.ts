@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
-
+import { AppState, InternalStateType } from './app.service';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppComponent } from './app.component';
 import { Routing } from './app.routes';
+
 
 // View
 import { HomeComponent } from './Components/home/home.component';
@@ -19,9 +21,7 @@ import { GoogleSearchComponent } from './Components/_Shared/googlesearch/googles
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 
 @NgModule({
-    imports: [
-        BrowserModule, FormsModule, HttpModule, JsonpModule, Routing
-    ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         HomeComponent,
@@ -33,9 +33,20 @@ import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper'
         GoogleSearchComponent,
         ImageCropperComponent
     ],
-    bootstrap: [AppComponent]
+    // Import Lib
+    imports: [
+        BrowserModule, FormsModule, HttpModule, JsonpModule, Routing
+    ],
+    providers: [
+        AppState,
+        APP_RESOLVER_PROVIDERS
+    ]
 })
 
 export class AppModule {
+<<<<<<< HEAD
     constructor() { }
+=======
+    constructor(public appState: AppState) {}
+>>>>>>> d2d418b974de1f8e9da509c9284bbf0b4ce238c0
 }

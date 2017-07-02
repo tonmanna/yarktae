@@ -1,5 +1,6 @@
 import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./Components/home/home.component";
+
 const routes : Routes = [
     {
         path: "",
@@ -7,7 +8,10 @@ const routes : Routes = [
         pathMatch: "full"
     }, {
         path: "home",
-        component: HomeComponent
+        component: HomeComponent,
+        // resolve :{
+        //     clock : 'clock'
+        // }
     }
 ];
 
