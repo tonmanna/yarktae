@@ -3,6 +3,10 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, JsonpModule} from '@angular/http';
 
+import { AppState, InternalStateType } from './app.service';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+
+
 import {AppComponent} from './app.component';
 import {Routing} from './app.routes';
 
@@ -18,9 +22,7 @@ import {CloudVisionComponent} from './Components/_Shared/cloudvision/cloudvision
 import {GoogleSearchComponent} from './Components/_Shared/googlesearch/googlesearch.component';
 
 @NgModule({
-    imports: [
-        BrowserModule, FormsModule, HttpModule, JsonpModule, Routing
-    ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         HomeComponent,
@@ -31,9 +33,16 @@ import {GoogleSearchComponent} from './Components/_Shared/googlesearch/googlesea
         CloudVisionComponent,
         GoogleSearchComponent
     ],
-    bootstrap: [AppComponent]
+    // Import Lib
+    imports: [
+        BrowserModule, FormsModule, HttpModule, JsonpModule, Routing
+    ],
+    providers: [
+        AppState,
+        APP_RESOLVER_PROVIDERS
+    ]
 })
 
 export class AppModule {
-    constructor() {}
+    constructor(public appState: AppState) {}
 }
