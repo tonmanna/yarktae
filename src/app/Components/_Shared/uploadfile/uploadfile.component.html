@@ -1,17 +1,29 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <h4>Please upload your funny picture.</h4>
-        <h4>Let us find expected picture.</h4>
-        <form>
-            <input type="file" name="file" class="inputimg" id="nameImg" accept="image/*" #fileUpload>
-            <br />
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: currentProgress + '%' }">
-                </div>
-            </div>
-            <span class="input-group-btn">
-                <button  type="submit" class="btn btn-block" (click)="uploadFile(fileUpload)">Upload Image</button>
-          </span>
-        </form>
+<div class="file-upload" style="padding-top:10px;">
+    <div class="row">
+        <div class="col-md-6">
+            <input id="custom-input" type="file" (change)="fileChangeListener($event, 'show')">
+        </div>
+        <div class="col-md-6 text-right">
+            <button (click)="fileChangeListener(data.image, 'upload')">Upload</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: currentProgress + '%' }">
+    </div>
+</div>
+<div class="container" style="padding-top:10px;">
+    <div class="row" style="padding-top:10px;">
+        <div class="col-md-6">
+            <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        </div>
+        <div class="col-md-6"><span class="pull-right">
+            <span class="result rounded" *ngIf="data.image">
+                <img #uploadfile [src]="data.image" [width]="cropperSettings.croppedWidth"
+                 [height]="cropperSettings.croppedHeight" style="width:500px;height:300px">
+            </span>
+            </span>
+        </div>
     </div>
 </div>

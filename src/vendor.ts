@@ -6,6 +6,7 @@ import "./assets/css/styles.scss";
 import "./assets/css/styles.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap-theme.css";
+import 'ng2-img-cropper/index.js';
 
 import "firebase/app";
 // all 3 are optional and you only need to require them at the start
