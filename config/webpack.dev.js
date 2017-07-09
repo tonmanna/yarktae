@@ -10,7 +10,7 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
 var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 module.exports = webpackMerge(commonConfig, {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     watch: true,
     watchOptions: {
         poll: true
