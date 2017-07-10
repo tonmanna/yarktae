@@ -9,15 +9,15 @@ import { Routing } from './app.routes';
 
 
 // View
-import { HomeComponent } from './Components/home/home.component';
+import { HomeComponent } from './Components/home';
 
 // Component
-import { UploadFileComponent } from './Components/_Shared/uploadfile/uploadfile.component';
-import { PreviewPictureComponent } from './Components/_Shared/peviewpicture/previewpicture.component';
-import { FirebaseLoginComponent } from './Components/_Shared/firebaselogin/filebaselogin.component';
-import { HistoryPictureComponent } from './Components/_Shared/historypicture/historypicture.component';
-import { CloudVisionComponent } from './Components/_Shared/cloudvision/cloudvision.component';
-import { GoogleSearchComponent } from './Components/_Shared/googlesearch/googlesearch.component';
+import { UploadFileComponent } from './Components/_Shared/uploadfile';
+import { PreviewPictureComponent } from './Components/_Shared/peviewpicture';
+import { FirebaseLoginComponent } from './Components/_Shared/firebaselogin';
+import { HistoryPictureComponent } from './Components/_Shared/historypicture';
+import { CloudVisionComponent } from './Components/_Shared/cloudvision';
+import { GoogleSearchComponent } from './Components/_Shared/googlesearch';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 
 @NgModule({
