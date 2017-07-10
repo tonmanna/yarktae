@@ -1,18 +1,9 @@
-import {Routes, RouterModule} from "@angular/router";
-import {HomeComponent} from "./Components/home/home.component";
+import { Routes, RouterModule } from "@angular/router";
+import { HomeComponent } from "./Components/home/home.component";
 
-const routes : Routes = [
-    {
-        path: "",
-        redirectTo: "home",
-        pathMatch: "full"
-    }, {
-        path: "home",
-        component: HomeComponent,
-        // resolve :{
-        //     clock : 'clock'
-        // }
-    }
+const routes: Routes = [
+    { path: "", redirectTo: "home", pathMatch: "full" },
+    { path: "home", component: HomeComponent }
 ];
 
 export const Routing = RouterModule.forRoot(routes);
