@@ -1,22 +1,15 @@
-import {
-    Component,
-    OnInit,
-    ChangeDetectorRef,
-    Input,
-    Output,
-    EventEmitter
-} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-declare var firebase : any;
+declare var firebase: any;
 
-@Component({selector: 'cmp-firebase-login', templateUrl: './filebaselogin.component.html'})
+@Component({ selector: 'cmp-firebase-login', templateUrl: './filebaselogin.component.html' })
 
 export class FirebaseLoginComponent {
-    @Output()onLoginSuccess = new EventEmitter < any > ();
-    public loginStatus : boolean;
-    public provider : any;
-    constructor(private chRef : ChangeDetectorRef) {
+    @Output() public onLoginSuccess = new EventEmitter<any>();
+    public loginStatus: boolean;
+    public provider: any;
+    constructor(private chRef: ChangeDetectorRef) {
         this.loginStatus = false;
         // Initialize Firebase
         const config = {
@@ -28,17 +21,13 @@ export class FirebaseLoginComponent {
             messagingSenderId: '563985708270'
         };
         firebase.initializeApp(config);
-        this.provider = new firebase
-            .auth
-            .FacebookAuthProvider();
-        this
-            .provider
-            .setCustomParameters({'display': 'popup'});
+        this.provider = new firebase.auth.FacebookAuthProvider();
+        this.provider.setCustomParameters({ display: 'popup' });
     }
-    firebaseLoginClick() {
+
+    public firebaseLoginClick() {
         const scope = this;
-        firebase
-            .auth()
+        firebase.auth()
             .signInWithPopup(this.provider)
             .then((result) => {
                 const token = result.credential.accessToken;
@@ -51,21 +40,21 @@ export class FirebaseLoginComponent {
                     .chRef
                     .detectChanges();
             })
-            .catch(function (error) {
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.email;
                 const credential = error.credential;
             });
     }
-    firebaseLogoutClick() {
-        firebase
-            .auth()
+
+    public firebaseLogoutClick() {
+        firebase.auth()
             .signOut()
-            .then(function () {
+            .then(() => {
                 // Sign-out successful.
             })
-            .catch(function (error) {
+            .catch((error) => {
                 // An error happened.
             });
     }

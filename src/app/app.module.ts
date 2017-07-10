@@ -7,7 +7,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppComponent } from './app.component';
 import { Routing } from './app.routes';
 
-
 // View
 import { HomeComponent } from './Components/home';
 

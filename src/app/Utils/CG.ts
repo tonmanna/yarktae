@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs/Observable';
 
 export class CG {
-    private static instance: CG;
-    static getInstance() {
+    public static instance: CG;
+    public static getInstance() {
         if (!CG.instance) {
             CG.instance = new CG();
         }

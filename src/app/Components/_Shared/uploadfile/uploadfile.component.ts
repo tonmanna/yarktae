@@ -1,12 +1,4 @@
-import {
-    Component,
-    OnInit,
-    ChangeDetectorRef,
-    Input,
-    Output,
-    EventEmitter,
-    ViewChild
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 
@@ -17,20 +9,19 @@ declare var firebase: any;
 })
 
 export class UploadFileComponent implements OnInit {
-    @Output() onUpload = new EventEmitter<string>();
+    @Output() public onUpload = new EventEmitter<string>();
     public currentProgress: string;
-    public storageRef = firebase
-        .storage()
-        .ref();
-    private fileuploadedURL: string;
+    public storageRef = firebase.storage().ref();
+    public fileuploadedURL: string;
 
-    // Cropper Images. 
-    data: any;
-    cropperSettings: any;
-    name: string;
-    croppedWidth: number;
-    croppedHeight: number;
-    @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
+    // Cropper Images.
+    public data: any;
+    public cropperSettings: any;
+    public name: string;
+    public croppedWidth: number;
+    public croppedHeight: number;
+
+    @ViewChild('cropper', undefined) public cropper: ImageCropperComponent;
     constructor(private chRef: ChangeDetectorRef) {
         this.cropperSettings = new CropperSettings();
         this.cropperSettings.noFileInput = true;
@@ -49,17 +40,17 @@ export class UploadFileComponent implements OnInit {
         this.data = {};
     }
 
-    cropped(bounds: Bounds) {
+    public cropped(bounds: Bounds) {
         this.croppedHeight = bounds.bottom - bounds.top;
         this.croppedWidth = bounds.right - bounds.left;
     }
 
-    fileChangeListener($event, status) {
-        var myReader: FileReader = new FileReader();
-        if (status !== "upload") {
-            console.log("On fileChangeListener :", $event);
-            var image: any = new Image();
-            var file: File = $event.target.files[0];
+    public fileChangeListener($event, status) {
+        const myReader: FileReader = new FileReader();
+        if (status !== 'upload') {
+            console.log('On fileChangeListener :', $event);
+            const image: any = new Image();
+            const file: File = $event.target.files[0];
             console.log('file11111111111111111:::> ', file.type);
 
             // const timestamp = new Date()
@@ -71,73 +62,72 @@ export class UploadFileComponent implements OnInit {
             // var uploadTask = mountainImagesRef.put(file);
             // this.uploadProgress(uploadTask);
 
-            var that = this;
-            myReader.onloadend = function (loadEvent: any) {
+            const that = this;
+            myReader.onloadend = (loadEvent: any) => {
                 image.src = loadEvent.target.result;
                 that.cropper.setImage(image);
             };
             myReader.readAsDataURL(file);
         } else {
-            console.log("555555555");
-            var url = this.data.image;
+            console.log('555555555');
+            const url = this.data.image;
             const timestamp = new Date().getTime().toString();
-            //Usage example:
-            this.urltoFile(url, timestamp + '.png', 'image/png')
-                .then(function (files) {
-                    if (files) {
-                        console.log('file222:::> ', files);
+            // Usage example:
+            this.urltoFile(url, timestamp + '.png', 'image/png').then((files) => {
+                if (files) {
+                    console.log('file222:::> ', files);
 
-                        var fileupload: File = JSON.parse(JSON.stringify(files));
-                        var mountainImagesRef = this
-                            .storageRef
-                            .child('images/' + timestamp);
-                        var uploadTask = mountainImagesRef.put(fileupload);
-                        this.uploadProgress(uploadTask);
-                    }
-                })
+                    const fileupload: File = JSON.parse(JSON.stringify(files));
+                    const mountainImagesRef = this.storageRef.child('images/' + timestamp);
+                    const uploadTask = mountainImagesRef.put(fileupload);
+                    this.uploadProgress(uploadTask);
+                }
+            });
         }
     }
-    urltoFile(url, filename, mimeType) {
+    public urltoFile(url, filename, mimeType) {
         return (fetch(url)
-            .then(function (res) { return res.arrayBuffer(); })
-            .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+            .then((res) => {
+                /* tslint:disable allow-return-shorthand */
+                return res.arrayBuffer();
+            })
+            .then((buf) => {
+                /* tslint:disable allow-return-shorthand */
+                return new File([buf], filename, { type: mimeType });
+            })
         );
     }
     // Cropper Images.
 
-    ngOnInit() {
-        this.currentProgress = "0";
+    public ngOnInit() {
+        this.currentProgress = '0';
     }
 
-    uploadFile(element) {
+    public uploadFile(element) {
         // Create a reference to 'images/mountains.jpg'
         if (element.files.length > 0) {
             const timestamp = new Date()
                 .getTime()
                 .toString();
-            var mountainImagesRef = this
-                .storageRef
-                .child('images/' + timestamp + element.files[0].name);
-            var file = element.files[0];
-            var uploadTask = mountainImagesRef.put(file);
+            const mountainImagesRef = this.storageRef.child('images/' + timestamp + element.files[0].name);
+            const file = element.files[0];
+            const uploadTask = mountainImagesRef.put(file);
             this.uploadProgress(uploadTask);
         } else {
             alert('Please select file');
         }
     }
 
-    uploadProgress(uploadTask) {
+    public uploadProgress(uploadTask) {
         const scope = this;
-        uploadTask.on('state_changed', function (snapshot) {
+        uploadTask.on('state_changed', (snapshot) => {
             console.log(snapshot.bytesTransferred);
             // Observe state change events such as progress, pause, and resume Get task
             // progress, including the number of bytes uploaded and the total number of
             // bytes to be uploaded
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             scope.currentProgress = progress.toFixed(0);
-            scope
-                .chRef
-                .detectChanges();
+            scope.chRef.detectChanges();
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
                     console.log('Upload is paused');
@@ -146,16 +136,12 @@ export class UploadFileComponent implements OnInit {
                     console.log('Upload is running');
                     break;
             }
-        }, function (error) {
+        }, (error) => {
             // Handle unsuccessful uploads
-        }, function () {
+        }, () => {
             scope.fileuploadedURL = uploadTask.snapshot.downloadURL;
-            scope
-                .onUpload
-                .emit(scope.fileuploadedURL);
-            scope
-                .chRef
-                .detectChanges();
+            scope.onUpload.emit(scope.fileuploadedURL);
+            scope.chRef.detectChanges();
         });
     }
 }
