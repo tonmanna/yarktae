@@ -12,7 +12,6 @@ import { HomeComponent } from './Components/home';
 
 // Component
 import { UploadFileComponent } from './Components/_Shared/uploadfile';
-import { PreviewPictureComponent } from './Components/_Shared/peviewpicture';
 import { FirebaseLoginComponent } from './Components/_Shared/firebaselogin';
 import { HistoryPictureComponent } from './Components/_Shared/historypicture';
 import { CloudVisionComponent } from './Components/_Shared/cloudvision';
@@ -25,7 +24,6 @@ import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper'
         AppComponent,
         HomeComponent,
         UploadFileComponent,
-        PreviewPictureComponent,
         FirebaseLoginComponent,
         HistoryPictureComponent,
         CloudVisionComponent,

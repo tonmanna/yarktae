@@ -5,11 +5,6 @@
             <cmp-upload-file (onUpload)="onUpload($event)"></cmp-upload-file>
         </div>
     </div>
-    <div class="column">
-        <div class="container">
-            <cmp-preview-picture [imagePath]="imagePath"></cmp-preview-picture>
-        </div>
-    </div>
 </div>
 <cmp-cloud-vision [imagePath]="imagePath" (onVisionResult)="onVisionResult($event)"></cmp-cloud-vision>
 <cmp-google-search [keywordList]="keywordList" (onGetSearchResult)="onGetSearchResult($event)"></cmp-google-search>

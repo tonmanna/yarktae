@@ -1,6 +1,6 @@
 {
     "vsicons.presets.angular": true,
-    // "tslint.exclude": "**/*.spec.ts",
+    "tslint.exclude": ["**/*.spec.ts", "**/coverate/**/*"],
     "files.exclude": {
         "**/.git": true, // this is a default value
         "**/.DS_Store": true, // this is a default value

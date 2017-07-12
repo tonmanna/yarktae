@@ -1,10 +1,10 @@
 <div class="file-upload" style="padding-top:10px;">
     <div class="row">
         <div class="col-md-6">
-            <input id="custom-input" type="file" (change)="fileChangeListener($event, 'show')">
+            <input id="custom-input" type="file" (change)="fileChangeListener($event)">
         </div>
         <div class="col-md-6 text-right">
-            <button (click)="fileChangeListener(data.image, 'upload')">Upload</button>
+            <button (click)="uploadFile(imageRender.image)">Upload</button>
         </div>
     </div>
 </div>
@@ -16,12 +16,12 @@
 <div class="container" style="padding-top:10px;">
     <div class="row" style="padding-top:10px;">
         <div class="col-md-6">
-            <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+            <img-cropper #cropper [image]="imageRender" [settings]="cropperSettings"></img-cropper>
         </div>
         <div class="col-md-6"><span class="pull-right">
-            <span class="result rounded" *ngIf="data.image">
-                <img #uploadfile [src]="data.image" [width]="cropperSettings.croppedWidth"
-                 [height]="cropperSettings.croppedHeight" style="width:500px;height:300px">
+            <span class="result rounded" *ngIf="imageRender.image">
+                <img #uploadfile [src]="imageRender.image" [width]="cropperSettings.croppedWidth"
+                 [height]="cropperSettings.croppedHeight">
             </span>
             </span>
         </div>
