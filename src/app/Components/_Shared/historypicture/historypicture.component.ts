@@ -25,8 +25,7 @@ export class HistoryPictureComponent {
     }
 
     public pickImage(item) {
-        this
-            .onPickImage
+        this.onPickImage
             .emit(item);
     }
 }

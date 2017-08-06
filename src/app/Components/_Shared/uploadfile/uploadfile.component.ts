@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 
@@ -9,6 +9,7 @@ declare var firebase: any;
 })
 
 export class UploadFileComponent implements OnInit {
+
     @Output() public onUpload = new EventEmitter<string>();
     public currentProgress: string;
     public storageRef = firebase.storage().ref();
