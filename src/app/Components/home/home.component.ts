@@ -13,6 +13,7 @@ export class HomeComponent {
 
     }
 
+
     public imagePath: string; // After Upload
     public credential: any; // After Login
 
@@ -59,10 +60,16 @@ export class HomeComponent {
             console.log(event.url);
             url = event.url;
         }
-        url
-        console.log("Http Get.");
-        var test = this.http.get('http://mergeimages.herokuapp.com/mergeimage?img1=http://image.dek-d.com/contentimg/2014/mint/Science/November-December/chicken04.jpg&img2=http://www.rakbankerd.com/kaset/Animal/2850_1.jpg')
-        console.log("test:", test);
+
+        
+        var mergeImage = 'http://mergeimages.herokuapp.com/mergeimage?img1=' + this.imagePath + '&img2=' + url;
+        console.log("imageList:::>", mergeImage);
+        this.http.get(mergeImage)
+            .map((res: Response) => {
+                console.log(":::::::::::>", res.json());
+            })
+
+
 
     }
 }
