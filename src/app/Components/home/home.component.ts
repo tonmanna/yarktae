@@ -1,19 +1,22 @@
 import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpHelper } from '../../Utils/HttpHelper';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 declare var $: any;
 
 @Component({ templateUrl: './home.component.html' })
 
-export class HomeComponent {
+export class HomeComponent extends HttpHelper {
 
     constructor(private http: Http) {
-
+        super();
     }
 
-
+    public headers;
+    public urlImage;
     public imagePath: string; // After Upload
     public credential: any; // After Login
 
@@ -61,15 +64,19 @@ export class HomeComponent {
             url = event.url;
         }
 
-        
-        var mergeImage = 'http://mergeimages.herokuapp.com/mergeimage?img1=' + this.imagePath + '&img2=' + url;
-        console.log("imageList:::>", mergeImage);
-        this.http.get(mergeImage)
-            .map((res: Response) => {
-                console.log(":::::::::::>", res.json());
-            })
+        this.mergeImages(url).subscribe((url) => {
+            console.log("url: ", url);
+            this.urlImage = url;
+        });
+    }
 
-
-
+    public mergeImages(query) {
+        var mergeImage = 'https://mergeimages.herokuapp.com/mergeimage?img1=' + this.imagePath + '&img2=' + query;
+        // var mergeImage = 'http://localhost:5000/mergeimage?img1=' + this.imagePath + '&img2=' + query;
+        return this
+            .http
+            .get(mergeImage)
+            .map((res: Response) => res.text())
+            .catch(this.handleError);
     }
 }
